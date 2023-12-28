@@ -24,8 +24,8 @@ public class RegisterActivity extends AppCompatActivity {
         LastName = (EditText) findViewById(R.id.LastName);
         NewUsername = (EditText) findViewById(R.id.NewUsername);
         Email = (EditText) findViewById(R.id.NewEmail);
-        NewPassword = (EditText) findViewById(R.id.NewPassword);
-        ConfirmPassword = (EditText) findViewById(R.id.NewPassword);
+        NewPassword = (EditText) findViewById(R.id.RegisteredEmail);
+        ConfirmPassword = (EditText) findViewById(R.id.RegisteredEmail);
         FirstNameInitialDrawable = FirstName.getCompoundDrawables()[0];
         LastNameInitialDrawable = LastName.getCompoundDrawables()[0];
         NewUsernameInitialDrawable = NewUsername.getCompoundDrawables()[0];

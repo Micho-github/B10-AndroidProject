@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:animateLayoutChanges="false"
     tools:context=".LoginActivity">
 
     <ImageView
@@ -13,35 +14,35 @@
         android:layout_marginTop="30dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4"
-        app:srcCompat="@drawable/user_logo__1_" />
+        app:layout_constraintTop_toBottomOf="@+id/animator"
+        app:srcCompat="@drawable/mag_high_resolution_logo_transparent" />
 
-    <EditText
+    <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/Username"
-        android:layout_width="300dp"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_margin="30dp"
-        android:background="#30FFFFFF"
+        android:layout_marginTop="30dp"
         android:drawableLeft="@drawable/baseline_person_24"
         android:drawablePadding="20dp"
         android:ems="10"
         android:freezesText="false"
         android:hint="Username"
-        android:inputType="textEmailAddress"
+        android:inputType="text"
         android:maxLength="20"
         android:padding="20dp"
         android:textColorHint="@android:color/darker_gray"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
-    <EditText
+    <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/Password"
-        android:layout_width="300dp"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
         android:layout_marginTop="50dp"
-        android:background="#30FFFFFF"
         android:drawableLeft="@drawable/baseline_lock_24"
         android:drawablePadding="20dp"
         android:ems="10"
@@ -61,7 +62,7 @@
         android:layout_margin="30dp"
         android:layout_marginTop="21dp"
         android:width="100dp"
-        android:backgroundTint="@color/black"
+        android:backgroundTint="#03A9F4"
         android:onClick="LoginRequest"
         android:text="Login"
         android:textColor="@color/white"
@@ -74,38 +75,28 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
-        android:backgroundTint="@color/black"
+        android:backgroundTint="#03A9F4"
         android:onClick="Register"
         android:text="Create an Account"
         android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+        app:layout_constraintTop_toBottomOf="@+id/ForgotPassword" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/ForgotPassword"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:layout_marginTop="24dp"
-        android:text="Forgot password?"
-        android:textColor="#0027FF"
         android:onClick="ForgotPassword"
+        android:padding="10dp"
+        android:text="Forgot password?"
+        android:textColor="#A0A0A0"
+        android:textSize="20dp"
+        android:textStyle="italic"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/SubmitAction" />
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:gravity="center"
-        android:text="Welcome Back"
-        android:textColor="@color/black"
-        android:textSize="34sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <ProgressBar
         android:id="@+id/progressBar"
@@ -117,5 +108,24 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ViewAnimator
+        android:id="@+id/animator"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="#03A9F4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/Broadcast"
+            android:layout_width="512dp"
+            android:layout_height="wrap_content"
+            android:gravity="start|left"
+            android:text="Welcome Back"
+            android:textColor="#FFFFFF"
+            android:textSize="34sp" />
+    </ViewAnimator>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
