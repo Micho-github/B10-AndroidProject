@@ -35,7 +35,7 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.loginactivity);
         final TextView Broadcast = findViewById(R.id.Broadcast);
         int screenWidth = getResources().getDisplayMetrics().widthPixels;
-        ObjectAnimator slideRight = ObjectAnimator.ofFloat(Broadcast, "translationX", 0f, screenWidth);
+        ObjectAnimator slideRight = ObjectAnimator.ofFloat(Broadcast, "translationX", 0f, screenWidth*2);
         slideRight.setDuration(5000); // Set the duration of the animation in milliseconds
 
         // Create an ObjectAnimator to slide back from the left

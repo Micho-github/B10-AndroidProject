@@ -111,10 +111,11 @@
 
     <ViewAnimator
         android:id="@+id/animator"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="883dp"
+        android:layout_height="47dp"
         android:background="#03A9F4"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
