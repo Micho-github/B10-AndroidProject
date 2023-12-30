@@ -1,16 +1,16 @@
-package com.example.mag_marketplace.ui.settings;
+package com.example.mag_marketplace.ui.reserved;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class SettingsViewModel extends ViewModel {
+public class ReservedViewModel extends ViewModel {
 
     private final MutableLiveData<String> mText;
 
-    public SettingsViewModel() {
+    public ReservedViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is settings fragment");
+        mText.setValue("This is Reserved fragment");
     }
 
     public LiveData<String> getText() {

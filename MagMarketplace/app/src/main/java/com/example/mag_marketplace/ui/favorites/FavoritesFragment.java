@@ -1,4 +1,4 @@
-package com.example.mag_marketplace.ui.reflow;
+package com.example.mag_marketplace.ui.favorites;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -8,22 +8,22 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
-import com.example.mag_marketplace.databinding.FragmentReflowBinding;
+import com.example.mag_marketplace.databinding.FragmentFavoritesBinding;
 
-public class ReflowFragment extends Fragment {
+public class FavoritesFragment extends Fragment {
 
-private FragmentReflowBinding binding;
+private FragmentFavoritesBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
             ViewGroup container, Bundle savedInstanceState) {
-        ReflowViewModel reflowViewModel =
-                new ViewModelProvider(this).get(ReflowViewModel.class);
+        FavoritesViewModel favoritesViewModel =
+                new ViewModelProvider(this).get(FavoritesViewModel.class);
 
-    binding = FragmentReflowBinding.inflate(inflater, container, false);
+    binding = FragmentFavoritesBinding.inflate(inflater, container, false);
     View root = binding.getRoot();
 
-        final TextView textView = binding.textReflow;
-        reflowViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+        final TextView textView = binding.textReflow2;
+        favoritesViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
         return root;
     }
 

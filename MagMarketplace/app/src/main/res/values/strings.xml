@@ -7,10 +7,11 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
-    <string name="menu_transform">Transform</string>
-    <string name="menu_reflow">Reflow</string>
-    <string name="menu_slideshow">Slideshow</string>
-    <string name="menu_settings">Settings</string>
+    <string name="menu_Home">Home</string>
+    <string name="menu_Favorites">Favorites</string>
+    <string name="menu_AddItem">Add Item</string>
+    <string name="menu_Reserved">Reserved</string>
+    <string name="menu_Profile">Profile</string>
 
     <string name="lorem_ipsum_title">Lorem Ipsum"</string>
     <string name="lorem_ipsum">Lorem Ipsum is simply placeholder text of the printing and

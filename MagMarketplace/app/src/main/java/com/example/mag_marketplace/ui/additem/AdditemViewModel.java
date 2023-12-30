@@ -1,19 +1,20 @@
-package com.example.mag_marketplace.ui.slideshow;
+package com.example.mag_marketplace.ui.additem;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class SlideshowViewModel extends ViewModel {
+public class AdditemViewModel extends ViewModel {
 
     private final MutableLiveData<String> mText;
 
-    public SlideshowViewModel() {
+    public AdditemViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is slideshow fragment");
+        mText.setValue("My Items");
     }
 
     public LiveData<String> getText() {
         return mText;
     }
+
 }
