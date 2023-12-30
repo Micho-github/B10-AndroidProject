@@ -1,17 +1,25 @@
 package com.example.mag_marketplace;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
+import android.graphics.Color;
 
 import androidx.appcompat.app.AppCompatActivity;
 public class AddItemActivity extends AppCompatActivity {
     private EditText ItemName,Price,Description;
     private Spinner Category,SubCategory,City;
+    private static final int PICK_IMAGE_REQUEST = 1;
+    LinearLayout linearLayout;
+    private ImageView Itemimage;
     String[] categories = {
             "Electronics",
             "Clothing",
@@ -188,7 +196,8 @@ public class AddItemActivity extends AppCompatActivity {
         City = findViewById(R.id.SpinnerCity);
         Price = findViewById(R.id.InputItemPrice);
         Description = findViewById(R.id.InputItemDescription);
-
+        Itemimage = findViewById(R.id.InputImage);
+        linearLayout = findViewById(R.id.linearLayout);
         ArrayAdapter<String> Categoryadapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, categories);
         Categoryadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         Category.setAdapter(Categoryadapter);
@@ -298,6 +307,7 @@ public class AddItemActivity extends AppCompatActivity {
                             // Handle the default case
                             break;
                     }
+
                 }
 
                 @Override
@@ -310,8 +320,23 @@ public class AddItemActivity extends AppCompatActivity {
         City.setAdapter(CityAdapter);
 
     }
+    public void selectImage(View view) {
+        // Open the gallery to select an image
+        Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        startActivityForResult(intent, PICK_IMAGE_REQUEST);
+    }
     public void ShowToast(String message){
         Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
+            linearLayout.setVisibility(View.INVISIBLE);
+            Itemimage.setBackgroundColor(Color.TRANSPARENT);
+            Itemimage.setImageURI(data.getData());
+        }
     }
 
     public void GoBack(View v){

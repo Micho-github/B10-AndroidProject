@@ -12,7 +12,7 @@ public class ForgotPasswordActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.forgotpassword);
         Email = (EditText) findViewById(R.id.RegisteredUsername);
-        NewPassword = (EditText) findViewById(R.id.RegisteredEmail);
+        NewPassword = (EditText) findViewById(R.id.Phone);
 
     }
     public void GoBack(View v){

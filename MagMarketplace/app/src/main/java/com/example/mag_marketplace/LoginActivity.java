@@ -74,12 +74,12 @@ public class LoginActivity extends AppCompatActivity {
         startActivity(new Intent(LoginActivity.this,ForgotPasswordActivity.class));
     }
     public void LoginRequest(View v){
-        String username = Username.getText().toString();
-        String password = Password.getText().toString();
+        String username = Username.getText().toString().toLowerCase();
+        String password = Password.getText().toString().toLowerCase();
         String type = "login";
         BackgroundWorker backgroundWorker = new BackgroundWorker(this);
         backgroundWorker.execute(type,username,password);
-        //startActivity(new Intent(LoginActivity.this,MainActivity.class));
+
     }
 
 }

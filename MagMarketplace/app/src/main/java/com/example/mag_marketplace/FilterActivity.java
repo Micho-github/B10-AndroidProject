@@ -197,11 +197,6 @@ public class FilterActivity extends AppCompatActivity{
             super.onCreate(savedInstanceState);
             setContentView(R.layout.filter);
             FilterButton = (Button)findViewById(R.id.filter);
-            // Replace these with your actual lists of categories, subcategories, and cities
-            allCategories = getSampleCategories();
-            allSubcategories = getSampleSubcategories();
-            allCities = getSampleCities();
-
             Category = findViewById(R.id.categorySpinner);
             SubCategory = findViewById(R.id.subcategorySpinner);
             City = findViewById(R.id.citySpinner);
@@ -209,22 +204,18 @@ public class FilterActivity extends AppCompatActivity{
             noResultsTextView = findViewById(R.id.noResultsTextView);
 
 
-            // Populate Subcategory Spinner initially with an empty list
-            ArrayAdapter<String> subcategoryAdapter = new ArrayAdapter<>(this,
-                    android.R.layout.simple_spinner_item, new ArrayList<>());
-            subcategoryAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-            SubCategory.setAdapter(subcategoryAdapter);
-            SubCategory.setEnabled(false);
-
             ArrayAdapter<String> Categoryadapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, categories);
             Categoryadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             Category.setAdapter(Categoryadapter);
+            ArrayAdapter<String> electronicsAdapter = new ArrayAdapter<>(getApplicationContext(),
+                    android.R.layout.simple_spinner_item, electronicsSubcategories);
+            electronicsAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            SubCategory.setAdapter(electronicsAdapter);
             Category.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
                     // Handle the selection
                     String selectedCategory = categories[position];
-                    if(!SubCategory.isEnabled()){SubCategory.setEnabled(true);}
                     switch (selectedCategory){
                         case "Electronics":
                             // Set up adapter for electronics subcategories
@@ -345,64 +336,14 @@ public class FilterActivity extends AppCompatActivity{
                 }
             });
         }
-
-        private void updateSubcategorySpinner(int categoryPosition) {
-            List<String> subcategoriesForCategory = getSubcategoriesForCategory(categoryPosition);
-            ArrayAdapter<String> subcategoryAdapter = new ArrayAdapter<>(this,
-                    android.R.layout.simple_spinner_item, subcategoriesForCategory);
-            subcategoryAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-            SubCategory.setAdapter(subcategoryAdapter);
-            SubCategory.setEnabled(!subcategoriesForCategory.isEmpty());
-        }
-
-        private List<String> getSampleCategories() {
-            List<String> categories = new ArrayList<>();
-            // Add sample categories
-            categories.add("Category A");
-            categories.add("Category B");
-            return categories;
-        }
-
-        private List<String> getSampleSubcategories() {
-            List<String> subcategories = new ArrayList<>();
-            // Add sample subcategories
-            subcategories.add("Subcategory X");
-            subcategories.add("Subcategory Y");
-            return subcategories;
-        }
-
-        private List<String> getSampleCities() {
-            List<String> cities = new ArrayList<>();
-            // Add sample cities
-            cities.add("City 1");
-            cities.add("City 2");
-            return cities;
-        }
-
-        private List<String> getSubcategoriesForCategory(int categoryPosition) {
-            // Replace this with your logic to fetch subcategories based on the selected category
-            return (categoryPosition == 0) ? getSampleSubcategories() : new ArrayList<>();
-        }
-
         private void filterResults() {
             // Replace this with your logic to filter items based on selected filters
             List<String> filteredResults = new ArrayList<>();
-
             // Sample logic: Check if subcategory is selected and add items accordingly
             String selectedCategory = Category.getSelectedItem().toString();
             String selectedSubcategory = SubCategory.isEnabled() ?
                     SubCategory.getSelectedItem().toString() : "";
             String selectedCity = City.getSelectedItem().toString();
-
-            for (String item : getSampleItems()) {
-                // Replace this logic with your own filtering criteria
-                if (item.contains(selectedCategory) &&
-                        (selectedSubcategory.isEmpty() || item.contains(selectedSubcategory)) &&
-                        item.contains(selectedCity)) {
-                    filteredResults.add(item);
-                }
-            }
-
             // Update UI based on filtered results
             if (filteredResults.isEmpty()) {
                 showNoResults();
@@ -428,14 +369,7 @@ public class FilterActivity extends AppCompatActivity{
         public void ShowToast(String message){
             Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
         }
-    private List<String> getSampleItems() {
-        List<String> items = new ArrayList<>();
-        // Add sample items
-        items.add("Item 1 - Category A - Subcategory X - City 1");
-        items.add("Item 2 - Category B - Subcategory Y - City 2");
-        // Add more items as needed
-        return items;
-    }
+
         public void GoBack(View v){
             finish();
         }
