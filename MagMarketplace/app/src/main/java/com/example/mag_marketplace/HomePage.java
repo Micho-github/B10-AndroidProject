@@ -12,7 +12,7 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class MainActivity extends AppCompatActivity {
+public class HomePage extends AppCompatActivity {
     private ImageView imageView1, imageView2, imageView3;
     private TextView name1, name2, name3, price1, price2, price3;
 
