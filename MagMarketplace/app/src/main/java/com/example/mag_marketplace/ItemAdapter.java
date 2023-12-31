@@ -31,7 +31,6 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
         Item item = itemList.get(position);
         holder.itemNameTextView.setText(item.getItemName());
         holder.itemDescriptionTextView.setText(item.getDescription());
-        holder.itemImageView.setImageResource(item.getImageResourceId());
     }
 
     @Override

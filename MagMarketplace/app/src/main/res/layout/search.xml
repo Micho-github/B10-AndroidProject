@@ -10,7 +10,7 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
     <AutoCompleteTextView
-        android:id="@+id/autoCompleteTextView"
+        android:id="@+id/searchEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/roumdstyle"
@@ -37,7 +37,7 @@
         android:id="@+id/searchResultsListView"
         android:layout_width="31dp"
         android:layout_height="184dp"
-        android:layout_below="@id/autoCompleteTextView"
+        android:layout_below="@id/searchEditText"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
         android:visibility="gone" />

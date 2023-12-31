@@ -97,9 +97,8 @@ public class Item {
                 ", category='" + category + '\'' +
                 ", subcategory='" + subcategory + '\'' +
                 ", price=" + price +
-                ", city='" + city + '\'' +
-                ", imagePath='" + ImageResourceId + '\'' +
-                '}';
+                ", city='" + city + '\''
+                ;
     }
 
     // You can add other methods as needed
