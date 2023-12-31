@@ -17,6 +17,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import android.os.AsyncTask;
+
+
 public class FilterActivity extends AppCompatActivity {
     private ListView filterResultsListView;
     private TextView noResultsTextView;
@@ -341,5 +350,156 @@ public class FilterActivity extends AppCompatActivity {
         public void GoBack(View v){
             finish();
         }
+
+    //rest
+    private Spinner categorySpinner, subcategorySpinner, citySpinner;
+    private Button filterButton;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_filtering);
+
+        categorySpinner = findViewById(R.id.categorySpinner);
+        subcategorySpinner = findViewById(R.id.subcategorySpinner);
+        citySpinner = findViewById(R.id.citySpinner);
+        filterButton = findViewById(R.id.filterButton);
+
+        // Populate spinners with data (you may retrieve this data from your server)
+        ArrayAdapter<CharSequence> categoryAdapter = ArrayAdapter.createFromResource(this,
+                R.array.categories_array, android.R.layout.simple_spinner_item);
+        categoryAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        categorySpinner.setAdapter(categoryAdapter);
+
+        ArrayAdapter<CharSequence> subcategoryAdapter = ArrayAdapter.createFromResource(this,
+                R.array.subcategories_array, android.R.layout.simple_spinner_item);
+        subcategoryAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        subcategorySpinner.setAdapter(subcategoryAdapter);
+
+        ArrayAdapter<CharSequence> cityAdapter = ArrayAdapter.createFromResource(this,
+                R.array.cities_array, android.R.layout.simple_spinner_item);
+        cityAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        citySpinner.setAdapter(cityAdapter);
+
+        // Add item selected listeners if needed
+        categorySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                // Handle category selection, if needed
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+                // Do nothing
+            }
+        });
+
+        subcategorySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                // Handle subcategory selection, if needed
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+                // Do nothing
+            }
+        });
+
+        citySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                // Handle city selection, if needed
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+                // Do nothing
+            }
+        });
+    }
+
+    public void onFilterButtonClick(View view) {
+        // Get selected category, subcategory, and city
+        String selectedCategory = categorySpinner.getSelectedItem().toString();
+        String selectedSubcategory = subcategorySpinner.getSelectedItem().toString();
+        String selectedCity = citySpinner.getSelectedItem().toString();
+
+        // Perform any additional processing or conversion of selected data as needed
+
+        // Make HTTP request to get filtered items
+        // Note: Replace the following line with the actual URL of your server and script
+        String url = "http://your_server/get_items_by_filter.php?" +
+                "category_code=" + getCategoryId(selectedCategory) +
+                "&subcategory_code=" + getSubcategoryId(selectedSubcategory) +
+                "&city_code=" + getCityId(selectedCity);
+
+        new FetchFilteredItemsTask().execute(url);
+    }
+
+    private int getCategoryId(String selectedCategory) {
+        // Implement logic to map category names to category codes
+        // For example, you might use a predefined array or retrieve data from the server
+        // You can replace this with your actual implementation
+        return 1; // Placeholder value
+    }
+
+    private int getSubcategoryId(String selectedSubcategory) {
+        // Implement logic to map subcategory names to subcategory codes
+        // Replace this with your actual implementation
+        return 1; // Placeholder value
+    }
+
+    private int getCityId(String selectedCity) {
+        // Implement logic to map city names to city codes
+        // Replace this with your actual implementation
+        return 1; // Placeholder value
+    }
+
+    private class FetchFilteredItemsTask extends AsyncTask<String, Void, List<Item>> {
+        @Override
+        protected List<Item> doInBackground(String... params) {
+            List<Item> itemList = new ArrayList<>();
+            try {
+                URL url = new URL(params[0]);
+                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+                InputStream inputStream = connection.getInputStream();
+                java.util.Scanner s = new java.util.Scanner(inputStream).useDelimiter("\\A");
+                String response = s.hasNext() ? s.next() : "";
+
+                JSONArray jsonArray = new JSONArray(response);
+
+                for (int i = 0; i < jsonArray.length(); i++) {
+                    JSONObject jsonObject = jsonArray.getJSONObject(i);
+                    int itemId = jsonObject.getInt("Item_id");
+                    String itemName = jsonObject.getString("Item_Name");
+                    double price = jsonObject.getDouble("Price");
+                    String itemImageBase64 = jsonObject.getString("Item_Image");
+
+                    byte[] itemImageBytes = android.util.Base64.decode(itemImageBase64, android.util.Base64.DEFAULT);
+
+                    Item item = new Item(itemId, itemName, price, itemImageBytes);
+                    itemList.add(item);
+                }
+            } catch (IOException | JSONException e) {
+                e.printStackTrace();
+            }
+            return itemList;
+        }
+
+        @Override
+        protected void onPostExecute(List<Item> itemList) {
+            // Update UI with filtered items
+            // For example, you might display them in a RecyclerView or ListView
+            // Here, I'm assuming you have a method updateUI(itemList) in your activity
+            updateUI(itemList);
+        }
+    }
+
+    private void updateUI(List<Item> itemList) {
+        // Implement this method to update your UI with the filtered items
+        // For example, you might set up a RecyclerView adapter and notify it with the new data
+        // Make sure to handle this on the UI thread
+    }
 
 }

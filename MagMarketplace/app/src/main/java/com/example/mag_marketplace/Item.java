@@ -7,7 +7,7 @@ public class Item {
     private String subcategory;
     private double price;
     private String city;
-    private int ImageResourceId;
+    private byte[] itemImageBytes;
 
     // Constructor
     public Item(String ownerName, String itemName, String description, String category, String subcategory, double price, String city, int ImageResourceId) {
@@ -18,7 +18,7 @@ public class Item {
         this.subcategory = subcategory;
         this.price = price;
         this.city = city;
-        this.ImageResourceId = ImageResourceId;
+        this.itemImageBytes = itemImageBytes;
     }
     public Item(){};
 
@@ -80,12 +80,12 @@ public class Item {
         this.city = city;
     }
 
-    public int  getImageResourceId() {
-        return ImageResourceId;
+    public byte[] getItemImageBytes() {
+        return itemImageBytes;
     }
 
-    public void setImageResourceId(int ImageResourceId) {
-        this.ImageResourceId = ImageResourceId;
+    public void setItemImageBytes(byte[] itemImageBytes) {
+        this.itemImageBytes = itemImageBytes;
     }
 
     @Override
