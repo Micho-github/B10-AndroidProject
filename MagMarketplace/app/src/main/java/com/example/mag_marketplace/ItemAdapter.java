@@ -52,6 +52,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
         }
     }
 
+
     public void filter(String query) {
         List<Item> filteredList = new ArrayList<>();
         for (Item item : itemList) {

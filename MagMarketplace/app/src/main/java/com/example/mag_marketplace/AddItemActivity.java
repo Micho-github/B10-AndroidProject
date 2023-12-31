@@ -1,8 +1,12 @@
 package com.example.mag_marketplace;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.text.TextUtils;
+import android.util.Base64;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -15,6 +19,7 @@ import android.graphics.Color;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 
 public class AddItemActivity extends AppCompatActivity {
@@ -311,7 +316,42 @@ public class AddItemActivity extends AppCompatActivity {
         // Notify the adapter that the data has changed
         subcategoryAdapter.notifyDataSetChanged();
     }
+    public void AddItemAction(View v) {
+        // Get the image data from the ImageView and convert it to a Base64 string
+        BitmapDrawable drawable = (BitmapDrawable) Itemimage.getDrawable();
+        if (drawable != null) {
+            Bitmap imageBitmap = drawable.getBitmap();
+            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+            imageBitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
+            byte[] byteArray = byteArrayOutputStream.toByteArray();
 
+            String encodedImage = Base64.encodeToString(byteArray, Base64.DEFAULT);
+            String itemname = ItemName.getText().toString().toLowerCase();
+            String price = Price.getText().toString().toLowerCase();
+            String description = Description.getText().toString().toLowerCase();
+            String categorycode = String.valueOf(Category.getSelectedItemPosition());
+            String subcategorycode = String.valueOf(Subcategory.getSelectedItemPosition());
+            String citycode = String.valueOf(City.getSelectedItemPosition());
+
+            if (isValidInput(itemname, price, description, categorycode, subcategorycode, citycode, encodedImage)) {
+                String type = "additem";
+                AddItemBackgroundWorker backgroundWorker = new AddItemBackgroundWorker(this);
+                backgroundWorker.execute(type, encodedImage, itemname, description, price, "5", categorycode, subcategorycode, citycode);
+            } else {
+                // Show a message to the user indicating that some fields are empty or invalid
+                Toast.makeText(this, "Please fill in all required fields", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+    private boolean isValidInput(String itemname, String price, String description, String categorycode, String subcategorycode, String citycode,String encodedImage) {
+        return !TextUtils.isEmpty(itemname) &&
+                !TextUtils.isEmpty(price) &&
+                !TextUtils.isEmpty(description) &&
+                categorycode!="0" &&
+                subcategorycode!="0" &&
+                citycode!="0" &&
+                !TextUtils.isEmpty(encodedImage);
+    }
     public void GoBack(View v){
         finish();
     }

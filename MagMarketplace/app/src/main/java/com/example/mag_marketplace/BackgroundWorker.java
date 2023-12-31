@@ -29,14 +29,14 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
     }
 
     @Override
-    protected String doInBackground(String... voids) {
-        String type = voids[0];
+    protected String doInBackground(String... params) {
+        String type = params[0];
         String login_url = "http://10.0.2.2:8080/login.php";
         String register_url = "http://10.0.2.2:8080/register.php";
         if(type.equals("login")){
             try {
-                String username = voids[1];
-                String password = voids[2];
+                String username = params[1];
+                String password = params[2];
                 URL url = new URL(login_url);
                 HttpURLConnection httpURLConnection = (HttpURLConnection)url.openConnection();
                 httpURLConnection.setRequestMethod("POST");
@@ -68,12 +68,12 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
             }
         }else if(type.equals("register")){
             try {
-                String firstname = voids[1];
-                String lastname = voids[2];
-                String username = voids[3];
-                String email = voids[4];
-                String phone = voids[5];
-                String password = voids[6];
+                String firstname = params[1];
+                String lastname = params[2];
+                String username = params[3];
+                String email = params[4];
+                String phone = params[5];
+                String password = params[6];
                 URL url = new URL(register_url);
                 HttpURLConnection httpURLConnection = (HttpURLConnection)url.openConnection();
                 httpURLConnection.setRequestMethod("POST");
