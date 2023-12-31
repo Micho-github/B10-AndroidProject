@@ -17,16 +17,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FilterActivity extends AppCompatActivity{
-        private ListView filterResultsListView;
-        private TextView noResultsTextView;
-        private Button FilterButton;
-        private List<String> allCategories;
-        private List<String> allSubcategories;
-        private List<String> allCities;
-    private EditText ItemName,Price,Description;
-    private Spinner Category,SubCategory,City;
+public class FilterActivity extends AppCompatActivity {
+    private ListView filterResultsListView;
+    private TextView noResultsTextView;
+    private Button FilterButton;
+    private ArrayAdapter<String> subcategoryAdapter;
+    private List<String> allCategories;
+    private List<String> allSubcategories;
+    private List<String> allCities;
+    private EditText ItemName, Price, Description;
+    private Spinner Category, SubCategory, City;
     String[] categories = {
+            "Select Category",
             "Electronics",
             "Clothing",
             "Home and Garden",
@@ -169,6 +171,7 @@ public class FilterActivity extends AppCompatActivity{
             "Sheet Music"
     };
     String[] lebaneseCities = {
+            "Select City",
             "Beirut",
             "Tripoli",
             "Sidon (Saida)",
@@ -192,137 +195,37 @@ public class FilterActivity extends AppCompatActivity{
             "Hermel"
     };
 
-        @Override
-        protected void onCreate(@Nullable Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            setContentView(R.layout.filter);
-            FilterButton = (Button)findViewById(R.id.filter);
-            Category = findViewById(R.id.categorySpinner);
-            SubCategory = findViewById(R.id.subcategorySpinner);
-            City = findViewById(R.id.citySpinner);
-            filterResultsListView = findViewById(R.id.filterResultsListView);
-            noResultsTextView = findViewById(R.id.noResultsTextView);
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.filter);
+        FilterButton = (Button) findViewById(R.id.filter);
+        Category = findViewById(R.id.CategoryFilter);
+        SubCategory = findViewById(R.id.SubcategoryFilter);
+        City = findViewById(R.id.CityFilter);
+        filterResultsListView = findViewById(R.id.filterResultsListView);
+        noResultsTextView = findViewById(R.id.noResultsTextView);
 
+        subcategoryAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, new ArrayList<>());
+        subcategoryAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        SubCategory.setAdapter(subcategoryAdapter);
+        ArrayAdapter<String> Categoryadapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, categories);
+        Categoryadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        Category.setAdapter(Categoryadapter);
+        Category.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                // Handle the selection
+                String selectedCategory = categories[position];
+                updateSubcategories(selectedCategory);
+            }
 
-            ArrayAdapter<String> Categoryadapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, categories);
-            Categoryadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-            Category.setAdapter(Categoryadapter);
-            ArrayAdapter<String> electronicsAdapter = new ArrayAdapter<>(getApplicationContext(),
-                    android.R.layout.simple_spinner_item, electronicsSubcategories);
-            electronicsAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-            SubCategory.setAdapter(electronicsAdapter);
-            Category.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                @Override
-                public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-                    // Handle the selection
-                    String selectedCategory = categories[position];
-                    switch (selectedCategory){
-                        case "Electronics":
-                            // Set up adapter for electronics subcategories
-                            ArrayAdapter<String> electronicsAdapter = new ArrayAdapter<>(getApplicationContext(),
-                                    android.R.layout.simple_spinner_item, electronicsSubcategories);
-                            electronicsAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                            SubCategory.setAdapter(electronicsAdapter);
-                            break;
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+                // Do nothing here
+            }
+        });
 
-                        case "Clothing":
-                            // Set up adapter for clothing subcategories
-                            ArrayAdapter<String> clothingAdapter = new ArrayAdapter<>(getApplicationContext(),
-                                    android.R.layout.simple_spinner_item, clothingSubcategories);
-                            clothingAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                            SubCategory.setAdapter(clothingAdapter);
-                            break;
-
-                        case "Home and Garden":
-                            // Set up adapter for fragment_home.xml and garden subcategories
-                            ArrayAdapter<String> homeAndGardenAdapter = new ArrayAdapter<>(getApplicationContext(),
-                                    android.R.layout.simple_spinner_item, homeAndGardenSubcategories);
-                            homeAndGardenAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                            SubCategory.setAdapter(homeAndGardenAdapter);
-                            break;
-
-                        case "Sports and Outdoors":
-                            // Set up adapter for sports and outdoors subcategories
-                            ArrayAdapter<String> sportsAndOutdoorsAdapter = new ArrayAdapter<>(getApplicationContext(),
-                                    android.R.layout.simple_spinner_item, sportsAndOutdoorsSubcategories);
-                            sportsAndOutdoorsAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                            SubCategory.setAdapter(sportsAndOutdoorsAdapter);
-                            break;
-
-                        case "Books and Stationery":
-                            // Set up adapter for books and stationery subcategories
-                            ArrayAdapter<String> booksAndStationeryAdapter = new ArrayAdapter<>(getApplicationContext(),
-                                    android.R.layout.simple_spinner_item, booksAndStationerySubcategories);
-                            booksAndStationeryAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                            SubCategory.setAdapter(booksAndStationeryAdapter);
-                            break;
-
-                        case "Health and Beauty":
-                            // Set up adapter for health and beauty subcategories
-                            ArrayAdapter<String> healthAndBeautyAdapter = new ArrayAdapter<>(getApplicationContext(),
-                                    android.R.layout.simple_spinner_item, healthAndBeautySubcategories);
-                            healthAndBeautyAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                            SubCategory.setAdapter(healthAndBeautyAdapter);
-                            break;
-
-                        case "Toys and Games":
-                            // Set up adapter for toys and games subcategories
-                            ArrayAdapter<String> toysAndGamesAdapter = new ArrayAdapter<>(getApplicationContext(),
-                                    android.R.layout.simple_spinner_item, toysAndGamesSubcategories);
-                            toysAndGamesAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                            SubCategory.setAdapter(toysAndGamesAdapter);
-                            break;
-
-                        case "Automotive":
-                            // Set up adapter for automotive subcategories
-                            ArrayAdapter<String> automotiveAdapter = new ArrayAdapter<>(getApplicationContext(),
-                                    android.R.layout.simple_spinner_item, automotiveSubcategories);
-                            automotiveAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                            SubCategory.setAdapter(automotiveAdapter);
-                            break;
-
-                        case "Appliances":
-                            // Set up adapter for appliances subcategories
-                            ArrayAdapter<String> appliancesAdapter = new ArrayAdapter<>(getApplicationContext(),
-                                    android.R.layout.simple_spinner_item, appliancesSubcategories);
-                            appliancesAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                            SubCategory.setAdapter(appliancesAdapter);
-                            break;
-
-                        case "Jewelry and Accessories":
-                            // Set up adapter for jewelry and accessories subcategories
-                            ArrayAdapter<String> jewelryAndAccessoriesAdapter = new ArrayAdapter<>(getApplicationContext(),
-                                    android.R.layout.simple_spinner_item, jewelryAndAccessoriesSubcategories);
-                            jewelryAndAccessoriesAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                            SubCategory.setAdapter(jewelryAndAccessoriesAdapter);
-                            break;
-
-                        case "Grocery and Gourmet":
-                            // Set up adapter for grocery and gourmet subcategories
-                            ArrayAdapter<String> groceryAndGourmetAdapter = new ArrayAdapter<>(getApplicationContext(),
-                                    android.R.layout.simple_spinner_item, groceryAndGourmetSubcategories);
-                            groceryAndGourmetAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                            SubCategory.setAdapter(groceryAndGourmetAdapter);
-                            break;
-
-                        case "Music and Instruments":
-                            // Set up adapter for music and instruments subcategories
-                            ArrayAdapter<String> musicAndInstrumentsAdapter = new ArrayAdapter<>(getApplicationContext(),
-                                    android.R.layout.simple_spinner_item, musicAndInstrumentsSubcategories);
-                            musicAndInstrumentsAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                            SubCategory.setAdapter(musicAndInstrumentsAdapter);
-                            break;
-                        default:
-                            // Handle the default case
-                            break;
-                    }
-                }
-
-                @Override
-                public void onNothingSelected(AdapterView<?> parentView) {
-                    // Do nothing here
-                }
-            });
             ArrayAdapter<String> CityAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, lebaneseCities);
             CityAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             City.setAdapter(CityAdapter);
@@ -370,6 +273,71 @@ public class FilterActivity extends AppCompatActivity{
             Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
         }
 
+    private void updateSubcategories(String selectedCategory) {
+        // Clear the previous subcategories
+        subcategoryAdapter.clear();
+
+        // Add a placeholder item
+        subcategoryAdapter.add("Select Subcategory");
+
+        switch (selectedCategory) {
+            case "Electronics":
+                subcategoryAdapter.addAll(electronicsSubcategories);
+                break;
+
+            case "Clothing":
+                subcategoryAdapter.addAll(clothingSubcategories);
+                break;
+
+            case "Home and Garden":
+                subcategoryAdapter.addAll(homeAndGardenSubcategories);
+                break;
+
+            case "Sports and Outdoors":
+                subcategoryAdapter.addAll(sportsAndOutdoorsSubcategories);
+                break;
+
+            case "Books and Stationery":
+                subcategoryAdapter.addAll(booksAndStationerySubcategories);
+                break;
+
+            case "Health and Beauty":
+                subcategoryAdapter.addAll(healthAndBeautySubcategories);
+                break;
+
+            case "Toys and Games":
+                subcategoryAdapter.addAll(toysAndGamesSubcategories);
+                break;
+
+            case "Automotive":
+                subcategoryAdapter.addAll(automotiveSubcategories);
+                break;
+
+            case "Appliances":
+                subcategoryAdapter.addAll(appliancesSubcategories);
+                break;
+
+            case "Jewelry and Accessories":
+                subcategoryAdapter.addAll(jewelryAndAccessoriesSubcategories);
+                break;
+
+            case "Grocery and Gourmet":
+                subcategoryAdapter.addAll(groceryAndGourmetSubcategories);
+                break;
+
+            case "Music and Instruments":
+                subcategoryAdapter.addAll(musicAndInstrumentsSubcategories);
+                break;
+            // Add cases for other categories
+
+            default:
+                // Handle the default case
+                break;
+        }
+
+        // Notify the adapter that the data has changed
+        subcategoryAdapter.notifyDataSetChanged();
+    }
         public void GoBack(View v){
             finish();
         }
