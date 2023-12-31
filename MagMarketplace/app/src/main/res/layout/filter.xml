@@ -11,9 +11,9 @@
         tools:layout_editor_absoluteY="28dp">
 
         <Spinner
-            android:id="@+id/categorySpinner"
-            android:layout_width="1000px"
-            android:layout_height="150px"
+            android:id="@+id/CategoryFilter"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:layout_marginStart="16dp"
@@ -23,10 +23,10 @@
             android:backgroundTint="#03A9F4" />
 
         <Spinner
-            android:id="@+id/subcategorySpinner"
+            android:id="@+id/SubcategoryFilter"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/categorySpinner"
+            android:layout_height="50dp"
+            android:layout_below="@id/CategoryFilter"
             android:layout_centerHorizontal="true"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
@@ -35,10 +35,10 @@
             android:backgroundTint="#03A9F4" />
 
         <Spinner
-            android:id="@+id/citySpinner"
-            android:layout_width="1000px"
-            android:layout_height="150px"
-            android:layout_below="@id/subcategorySpinner"
+            android:id="@+id/CityFilter"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@id/SubcategoryFilter"
             android:layout_centerHorizontal="true"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
@@ -65,7 +65,7 @@
             android:id="@+id/filter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/citySpinner"
+            android:layout_below="@+id/CityFilter"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="6dp"
             android:text="Filter"
