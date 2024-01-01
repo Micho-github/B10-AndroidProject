@@ -8,11 +8,11 @@
         android:id="@+id/backButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:src="@drawable/baseline_arrow_back_24"
         android:layout_alignTop="@+id/title"
         android:layout_alignBottom="@+id/title"
-        android:layout_marginLeft="10dp"
-        android:background="#FFFFFF"
-        android:src="@drawable/baseline_arrow_back_24" />
+        android:background="#ffff"
+        android:layout_marginLeft="10dp"/>
 
 
     <!-- Title -->
@@ -28,53 +28,56 @@
 
     <!-- Main Image -->
     <ImageView
-        android:id="@+id/mainImageView"
+        android:id="@+id/image"
         android:layout_width="300dp"
         android:layout_height="300dp"
         android:layout_below="@id/title"
         android:background="@color/black"
+        android:src="#000000"
         android:scaleType="centerCrop"
         android:layout_centerHorizontal="true"/>
 
     <!-- Item Name -->
     <TextView
-        android:id="@+id/itemNameTextView"
+        android:id="@+id/itemName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Item Name"
-        android:textSize="18sp"
-        android:padding="10dp"
-        android:layout_below="@id/mainImageView"
+        android:layout_below="@id/image"
         android:layout_alignStart="@id/description"
-        android:layout_margin="5dp"/>
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="5dp"
+        android:padding="10dp"
+        android:textSize="18sp" />
 
 
 
     <!-- Price -->
     <TextView
-        android:id="@+id/priceTextView"
+        android:id="@+id/price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/mainImageView"
+        android:layout_below="@id/image"
         android:layout_alignEnd="@id/description"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="5dp"
         android:background="#00A3FF"
         android:gravity="left"
         android:padding="10dp"
-        android:text="Price: $100"
         android:textColor="@color/white"
-        android:textSize="18sp"
-        android:layout_margin="5dp"/>
+        android:textSize="18sp" />
 
     <!-- Description -->
     <TextView
         android:id="@+id/description"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:text="Lorem ipsum dolor sit amet. Et autem accusantium aut molestias officia ut vero omnis! Aut unde sapiente aut quia rerum rem sapiente molestiae sed iure cumque et velit quia et adipisci nemo."
-        android:padding="8dp"
-        android:layout_below="@id/itemNameTextView"
+        android:layout_below="@id/itemName"
         android:layout_centerHorizontal="true"
-        />
+        android:padding="8dp" />
 
 
     <!-- Seller Info and Rating -->
@@ -84,7 +87,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="16dp"
-        android:layout_below="@id/images"
+        android:layout_below="@id/description"
         android:layout_alignStart="@id/description">
 
         <!-- Seller Profile Picture -->
@@ -104,72 +107,30 @@
             android:id="@+id/sellerName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Seller Name"
-            android:layout_toEndOf="@id/profilePicture"
-            android:layout_alignTop="@id/profilePicture"/>
+            android:layout_above="@+id/sellerEmail"
+            android:layout_toEndOf="@id/profilePicture" />
 
-        <!-- Seller Rating -->
-        <TextView
-            android:id="@+id/sellerRating"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Rating: 4.2"
-            android:layout_toEndOf="@id/profilePicture"
-            android:layout_below="@id/sellerName"/>
+
 
         <!-- Seller Email -->
         <TextView
             android:id="@+id/sellerEmail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="seller@example.com"
             android:layout_below="@id/profilePicture"
-            android:layout_alignStart="@id/sellerName"/>
+            android:layout_alignStart="@id/sellerName" />
 
         <!-- Seller Phone Number -->
         <TextView
             android:id="@+id/sellerPhoneNumber"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="123-456-7890"
             android:layout_below="@id/sellerEmail"
-            android:layout_alignStart="@id/sellerName"/>
+            android:layout_alignStart="@id/sellerName" />
 
     </RelativeLayout>
 
 
-    <!-- Images -->
-    <LinearLayout
-        android:id="@+id/images"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="8dp"
-        android:layout_below="@id/description"
-        android:layout_centerHorizontal="true"
-        android:gravity="center">
-
-        <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:background="@color/black"
-            android:scaleType="centerCrop"
-            android:layout_marginEnd="8dp"/>
-
-        <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:background="@color/black"
-            android:scaleType="centerCrop"
-            android:layout_marginEnd="8dp"/>
-
-        <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:background="@color/black"
-            android:scaleType="centerCrop"
-            android:layout_marginEnd="8dp"/>
-    </LinearLayout>
 
 
     <!-- Buttons -->

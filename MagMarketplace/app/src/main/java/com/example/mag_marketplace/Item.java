@@ -97,8 +97,7 @@ public class Item {
                 ", category='" + category + '\'' +
                 ", subcategory='" + subcategory + '\'' +
                 ", price=" + price +
-                ", city='" + city + '\''
-                ;
+                ", city='" + city + '\'';
     }
 
     // You can add other methods as needed

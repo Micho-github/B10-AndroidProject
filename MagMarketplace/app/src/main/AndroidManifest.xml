@@ -25,6 +25,10 @@
             android:exported="false"
             android:theme="@style/Theme.MagMarketplace.NoActionBar"
             />
+        <activity android:name=".ItemDisplay"
+            android:exported="false"
+            android:theme="@style/Theme.MagMarketplace.NoActionBar"
+            />
         <activity android:name=".RegisterActivity"
             android:exported="false"
             android:theme="@style/Theme.MagMarketplace.NoActionBar"

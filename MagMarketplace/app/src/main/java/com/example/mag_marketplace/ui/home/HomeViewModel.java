@@ -24,21 +24,11 @@ public class HomeViewModel extends ViewModel {
 
     public HomeViewModel() {
         // Initialize yourLiveDataForYou and yourLiveDataOther with sample data or leave them empty
-        List<Item> itemsForYou = generateSampleItemsForYou();
         List<Item> itemsOther = generateSampleItemsOther();
 
-        yourLiveDataForYou.setValue(itemsForYou);
         yourLiveDataOther.setValue(itemsOther);
     }
 
-    private List<Item> generateSampleItemsForYou() {
-        // Replace this with the actual logic to generate "For You" items
-        List<Item> items = new ArrayList<>();
-        for (int i = 1; i <= 3; i++) {
-            items.add(new Item());
-        }
-        return items;
-    }
 
     private List<Item> generateSampleItemsOther() {
         // Replace this with the actual logic to generate "Other" items
