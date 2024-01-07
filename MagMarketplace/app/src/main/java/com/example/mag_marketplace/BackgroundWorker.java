@@ -134,7 +134,7 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
     }
     public static void showAlertDialog(Context context, String message) {
         AlertDialog alertDialog = new AlertDialog.Builder(context)
-                .setTitle("Alert")
+                .setTitle("Login Status")
                 .setMessage(message)
                 .setCancelable(false)
                 .create();

@@ -336,7 +336,7 @@ public class AddItemActivity extends AppCompatActivity {
             if (isValidInput(itemname, price, description, categorycode, subcategorycode, citycode, encodedImage)) {
                 String type = "additem";
                 AddItemBackgroundWorker backgroundWorker = new AddItemBackgroundWorker(this);
-                backgroundWorker.execute(type, encodedImage, itemname, description, price, "5", categorycode, subcategorycode, citycode);
+                backgroundWorker.execute(type, encodedImage, itemname, description, price, "125", categorycode, subcategorycode, citycode);
             } else {
                 // Show a message to the user indicating that some fields are empty or invalid
                 Toast.makeText(this, "Please fill in all required fields", Toast.LENGTH_SHORT).show();

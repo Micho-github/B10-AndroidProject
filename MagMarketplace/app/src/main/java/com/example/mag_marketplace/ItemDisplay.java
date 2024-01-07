@@ -5,6 +5,7 @@ import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -115,5 +116,11 @@ public class ItemDisplay extends AppCompatActivity {
     }
     private void showToast(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    }
+    public void Request(View v){
+        showToast("Item successfully reserved");
+    }
+    public void favorite(View v) {
+        showToast("Item added to favorites");
     }
 }

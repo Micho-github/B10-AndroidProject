@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.example.mag_marketplace.Item;
+import com.example.mag_marketplace.ItemAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,18 +25,11 @@ public class HomeViewModel extends ViewModel {
 
     public HomeViewModel() {
         // Initialize yourLiveDataForYou and yourLiveDataOther with sample data or leave them empty
-        List<Item> itemsOther = generateSampleItemsOther();
 
-        yourLiveDataOther.setValue(itemsOther);
+
+
     }
 
 
-    private List<Item> generateSampleItemsOther() {
-        // Replace this with the actual logic to generate "Other" items
-        List<Item> items = new ArrayList<>();
-        for (int i = 1; i <= 16; i++) {
-            items.add(new Item());
-        }
-        return items;
-    }
+
 }

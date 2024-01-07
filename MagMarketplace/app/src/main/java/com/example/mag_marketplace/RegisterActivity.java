@@ -31,7 +31,7 @@ public class RegisterActivity extends AppCompatActivity {
         String phone = Phone.getText().toString();
         String type = "register";
         BackgroundWorker backgroundWorker = new BackgroundWorker(this);
-        backgroundWorker.execute(type,firstname,lastname,username,email,password,phone);
+        backgroundWorker.execute(type,firstname,lastname,username,email,phone,password);
         }
         public void GoBack(View v){
             finish();

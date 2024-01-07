@@ -147,6 +147,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:onClick="favorite"
             android:text="Add to Favorites" />
 
         <Button
@@ -155,6 +156,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:backgroundTint="#00A3FF"
+            android:onClick="Request"
             android:text="Request Item"
             android:textColor="@color/white"
             android:textStyle="bold" />
