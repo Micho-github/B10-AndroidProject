@@ -23,7 +23,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class ItemDisplay extends AppCompatActivity {
+public class edititem extends AppCompatActivity {
 
     private TextView itemNameTextView;
     private TextView itemDescriptionTextView;
@@ -36,7 +36,7 @@ public class ItemDisplay extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.item);
+        setContentView(R.layout.edititem);
 
         itemNameTextView = findViewById(R.id.itemName);
         itemDescriptionTextView = findViewById(R.id.description);
@@ -117,14 +117,15 @@ public class ItemDisplay extends AppCompatActivity {
     private void showToast(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
-    public void Request(View v){
-        showToast("Item successfully reserved");
+    public void update(View v){
+        showToast("takes you to update page");
     }
-    public void favorite(View v) {
-        showToast("Item added to favorites");
+    public void delete(View v) {
+        showToast("deletes item");
     }
 
     public void GoBack(View v) {
-    finish();
+        finish();
     }
 }
+

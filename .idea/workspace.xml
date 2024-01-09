@@ -5,17 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8723618d-9b35-4e3e-a8ce-4fe9f657e078" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/AndroidProject.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MagMarketplace/app/src/main/java/com/example/mag_marketplace/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/MagMarketplace/app/src/main/java/com/example/mag_marketplace/Item.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MagMarketplace/app/src/main/java/com/example/mag_marketplace/ItemAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/MagMarketplace/app/src/main/java/com/example/mag_marketplace/ItemAdapter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MagMarketplace/app/src/main/java/com/example/mag_marketplace/ui/home/HomeFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/MagMarketplace/app/src/main/java/com/example/mag_marketplace/ui/home/HomeFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MagMarketplace/app/src/main/res/layout/item_card.xml" beforeDir="false" afterPath="$PROJECT_DIR$/MagMarketplace/app/src/main/res/layout/item_card.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,15 +20,15 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "cidr.known.project.marker": "true",
-    "last_opened_file_path": "C:/Users/Miche/OneDrive/Desktop/github/AndroidProject/MagMarketplace"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Miche/OneDrive/Desktop/github/AndroidProject/MagMarketplace&quot;
   }
-}]]></component>
+}</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">

@@ -44,12 +44,10 @@ import java.util.List;
 public class HomeFragment extends Fragment {
 
     private FragmentHomeBinding binding;
-    private List<Item> itemListForYou = new ArrayList<>();
-    private List<Item> itemListOther = new ArrayList<>();
-    private ImageView imageView1, imageView2, imageView3,imageView4, imageView5, imageView6;
-    private TextView name1, name2, name3,name4, name5, name6, price1, price2, price3, price4, price5, price6;
-    private LinearLayout linearLayout1,linearLayout2,linearLayout3,linearLayout4,linearLayout5,linearLayout6;
-    private int itemid1,itemid2,itemid3,itemid4,itemid5,itemid6;
+    private ImageView imageView1, imageView2, imageView3,imageView4, imageView5, imageView6,imageView7;
+    private TextView name1, name2, name3,name4, name5, name6,name7, price1, price2, price3, price4, price5, price6,price7;
+    private LinearLayout linearLayout1,linearLayout2,linearLayout3,linearLayout4,linearLayout5,linearLayout6,linearLayout7;
+    private int itemid1,itemid2,itemid3,itemid4,itemid5,itemid6,itemid7;
     private Button Search, Filter;
 
     @Override
@@ -65,6 +63,7 @@ public class HomeFragment extends Fragment {
         imageView4 = binding.image4;
         imageView5 = binding.image5;
         imageView6 = binding.image6;
+        imageView7 = binding.image7;
 
         name1 = binding.name1;
         name2 = binding.name2;
@@ -72,6 +71,7 @@ public class HomeFragment extends Fragment {
         name4 = binding.name4;
         name5 = binding.name5;
         name6 = binding.name6;
+        name7 = binding.name7;
 
         price1 = binding.price1;
         price2 = binding.price2;
@@ -79,6 +79,7 @@ public class HomeFragment extends Fragment {
         price4 = binding.price4;
         price5 = binding.price5;
         price6 = binding.price6;
+        price7 = binding.price7;
 
         linearLayout1 = root.findViewById(R.id.item1);
         linearLayout1.setOnClickListener(new View.OnClickListener() {
@@ -134,6 +135,15 @@ public class HomeFragment extends Fragment {
                 Intent intent6 = new Intent(getActivity(), ItemDisplay.class);
                 intent6.putExtra("Item_id", itemid6);
                 startActivity(intent6);
+            }
+        });
+        linearLayout7 = root.findViewById(R.id.item7);
+        linearLayout7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent7 = new Intent(getActivity(), ItemDisplay.class);
+                intent7.putExtra("Item_id", itemid7);
+                startActivity(intent7);
             }
         });
 
@@ -203,6 +213,7 @@ public class HomeFragment extends Fragment {
                     JSONObject item4 = jsonArray.getJSONObject(3);
                     JSONObject item5 = jsonArray.getJSONObject(4);
                     JSONObject item6 = jsonArray.getJSONObject(5);
+                    JSONObject item7 = jsonArray.getJSONObject(6);
 
 
                     itemid1 = Integer.parseInt(item1.getString("Item_id"));
@@ -223,17 +234,22 @@ public class HomeFragment extends Fragment {
                     itemid4 = Integer.parseInt(item4.getString("Item_id"));
                     name4.setText(item4.getString("Item_Name"));
                     price4.setText("$"+item4.getString("Price"));
-                    new DownloadImageTask(imageView3).execute(item3.getString("Item_Image"));
+                    new DownloadImageTask(imageView4).execute(item4.getString("Item_Image"));
 
                     itemid5 = Integer.parseInt(item5.getString("Item_id"));
                     name5.setText(item5.getString("Item_Name"));
                     price5.setText("$"+item5.getString("Price"));
-                    new DownloadImageTask(imageView3).execute(item3.getString("Item_Image"));
+                    new DownloadImageTask(imageView5).execute(item5.getString("Item_Image"));
 
                     itemid6 = Integer.parseInt(item6.getString("Item_id"));
                     name6.setText(item6.getString("Item_Name"));
                     price6.setText("$"+item6.getString("Price"));
-                    new DownloadImageTask(imageView3).execute(item3.getString("Item_Image"));
+                    new DownloadImageTask(imageView6).execute(item6.getString("Item_Image"));
+
+                    itemid7 = Integer.parseInt(item7.getString("Item_id"));
+                    name7.setText(item7.getString("Item_Name"));
+                    price7.setText("$"+item7.getString("Price"));
+                    new DownloadImageTask(imageView7).execute(item7.getString("Item_Image"));
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }

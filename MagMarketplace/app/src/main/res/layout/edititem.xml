@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ImageButton
+            android:id="@+id/backButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/title"
+            android:layout_alignBottom="@+id/title"
+            android:layout_marginLeft="10dp"
+            android:background="#ffff"
+            android:onClick="GoBack"
+            android:src="@drawable/baseline_arrow_back_24" />
+
+
+        <!-- Title -->
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:padding="16dp"
+            android:text="Edit Item Page"
+            android:textSize="22sp" />
+
+        <!-- Main Image -->
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:layout_below="@id/title"
+            android:layout_centerHorizontal="true"
+            android:background="@color/black"
+            android:scaleType="centerCrop"
+            android:src="#000000" />
+
+        <!-- Item Name -->
+        <TextView
+            android:id="@+id/itemName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/image"
+            android:layout_alignStart="@id/description"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="5dp"
+            android:padding="10dp"
+            android:textSize="18sp" />
+
+
+        <!-- Price -->
+        <TextView
+            android:id="@+id/price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/image"
+            android:layout_alignEnd="@id/description"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="5dp"
+            android:background="#00A3FF"
+            android:gravity="left"
+            android:padding="10dp"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+
+        <!-- Description -->
+        <TextView
+            android:id="@+id/description"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/itemName"
+            android:layout_centerHorizontal="true"
+            android:padding="8dp" />
+
+
+        <!-- Seller Info and Rating -->
+
+
+        <!-- Buttons -->
+
+        <RelativeLayout
+            android:id="@+id/sellerInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/description"
+            android:layout_alignStart="@id/description"
+            android:layout_marginStart="-28dp"
+            android:layout_marginTop="12dp"
+            android:padding="16dp">
+
+            <!-- Seller Profile Picture -->
+            <ImageView
+                android:id="@+id/profilePicture"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="8dp"
+                android:background="@color/black"
+                android:scaleType="centerCrop"
+                android:src="@drawable/baseline_person_24" />
+
+            <!-- Seller Name -->
+            <TextView
+                android:id="@+id/sellerName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/sellerEmail"
+                android:layout_toEndOf="@id/profilePicture" />
+
+
+            <!-- Seller Email -->
+            <TextView
+                android:id="@+id/sellerEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/profilePicture"
+                android:layout_alignStart="@id/sellerName" />
+
+            <!-- Seller Phone Number -->
+            <TextView
+                android:id="@+id/sellerPhoneNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/sellerEmail"
+                android:layout_alignStart="@id/sellerName" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/sellerInfo"
+            android:layout_marginTop="40dp"
+            android:orientation="horizontal"
+            android:padding="8dp">
+
+            <Button
+                android:id="@+id/addToFavoritesButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:backgroundTint="#35C23B"
+                android:onClick="update"
+                android:text="Update" />
+
+            <Button
+                android:id="@+id/requestButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:backgroundTint="#FF0000"
+                android:onClick="delete"
+                android:text="Delete"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+
+    </RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -10,7 +10,7 @@ public class ReservedViewModel extends ViewModel {
 
     public ReservedViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is Reserved fragment");
+        mText.setValue("Reserved Items");
     }
 
     public LiveData<String> getText() {
